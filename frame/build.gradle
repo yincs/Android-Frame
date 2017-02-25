@@ -19,7 +19,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
+
 
 def appcompatVersion = "25.2.0"
 dependencies {
@@ -29,7 +34,6 @@ dependencies {
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
     testCompile 'junit:junit:4.12'
-//    androidTestCompile "com.google.code.findbugs:jsr305:3.0.1"
     //android兼容包
     compile group: 'com.android.support', name: 'appcompat-v7', version: appcompatVersion
     compile group: 'com.android.support', name: 'design', version: appcompatVersion
@@ -64,4 +68,8 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //glide添加okhttp3支持
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+
+    //安卓常用工具类
+    compile 'changs.android:utils:0.0.1'
 }
+apply from: "bintray.gradle"
