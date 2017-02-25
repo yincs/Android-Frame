@@ -46,7 +46,7 @@ publish {
     userOrg = 'yincs'
     groupId = 'changs.android'
     artifactId = 'frame'
-    publishVersion = '0.0.1'
+    publishVersion = '0.0.2'
     desc = 'This is an android frame'
     website = 'https://github.com/yincs/Android-Frame'
 }

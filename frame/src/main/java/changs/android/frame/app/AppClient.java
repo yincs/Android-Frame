@@ -29,6 +29,7 @@ public final class AppClient {
 
     private AppClient(Config config) {
         this.config = config;
+        Utils.init(config.context);
     }
 
     static AppClient get() {
@@ -45,10 +46,6 @@ public final class AppClient {
      */
     private final HashMap<Class<?>, Object> sysBeans = new HashMap<>();
 
-
-    public void initApp(Config config) {
-        Utils.init(config.context);
-    }
 
     public static Context getApplicationContext() {
         return get().config.context;
@@ -133,8 +130,11 @@ public final class AppClient {
 
 
     @VisibleForTesting
-    public static void test(Context applicationContext, boolean debug) {
-        get().initApp(new Config(applicationContext).debug());
+    public static void test(Context applicationContext) {
+        new Config(applicationContext)
+                .debug()
+                .logLevel(Log.INFO)
+                .setup();
     }
 
     public static class Config {
